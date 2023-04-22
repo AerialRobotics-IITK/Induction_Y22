@@ -34,7 +34,7 @@ There are a lot of DSAs that are part of this.
 
 ## 4) Python
 
-Here are some Python sample codes for [robotics algorithms](https://github.com/AtsushiSakai/PythonRobotics)
+Here are some Python codes for [robotics algorithms](https://github.com/AtsushiSakai/PythonRobotics)
  
 > This is optional.
 

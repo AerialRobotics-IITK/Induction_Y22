@@ -31,7 +31,7 @@ There are a lot of DSAs that are part of this.
 - Knowing the concepts always helps: [Theory](https://web.stanford.edu/class/ee368/handouts.html)
 
 - YOLO (You Only Look Once) is a real-time object detection system that uses a deep neural network and is implemented using the Darknet neural network framework. The Darknet framework is an open-source neural network framework written in C and CUDA, and it is optimized for both CPU and GPU computing.[Official Github Repo](https://github.com/AlexeyAB/darknet)
-wbfuefuwfuwei
+
 ## 4) Python
 
 Here are some Python sample codes for [robotics algorithms](https://github.com/AtsushiSakai/PythonRobotics)

@@ -1,0 +1,25 @@
+Station
+    Variables
+        string name;
+        coordinates position;
+        unsigned long long id;
+Ticket
+    Variables
+        Station departure, destination
+        date schedule
+        bool coach
+        unsigned char seat_number
+        float cost
+User
+    Variables
+        string name, password, username
+        unsigned long long id
+        vector<Ticket> ticket_history
+Passenger
+TicketCollector
+    Variables
+        employeeID
+Travel
+    vector<Passenger> passengers
+    unsigned int departure, destination
+    date schedule

@@ -46,8 +46,7 @@ public:
     }
 
     double calculateTicketCost() const {
-        // Calculate ticket cost based on distance (Euclidean or Manhattan distance)
-        // You can implement your own calculation logic here
+        // Calculate ticket cost based on distance
         double distance = calculateDistance(startLocation, endLocation);
         return distance * 10.0;  // Assuming $10 per unit distance
     }
@@ -66,10 +65,7 @@ public:
 
 private:
     double calculateDistance(const std::string& loc1, const std::string& loc2) const {
-        // Implement your own distance calculation logic here
-        // Example: Euclidean distance between two points (x1, y1) and (x2, y2)
-        // double distance = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
-        // Return the calculated distance
+        //distance calc logic
     }
 };
 
@@ -88,15 +84,15 @@ void Passenger::bookTicket(const std::string& startLocation, const std::string& 
     if (booked) {
         std::cout << "Ticket booked successfully!\n";
         // Create and assign the ticket to the passenger here
-    } else { std::cout << "Ticket booking failed!\n";
+    } else { std::cout << "no ticket\n";
     }
 }
 
 int main() {
     // Sample usage of the Train Booking System
-    Passenger passenger("John Doe", "john123", "password");
+    Passenger passenger("vighnesh", "vighneshop123", "12345678");
 
-    // Login or signup logic goes here
+    // login logic
 
     std::string startLocation, endLocation, date;
     std::cout << "Enter start location: ";

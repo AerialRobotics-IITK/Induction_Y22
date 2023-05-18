@@ -2,23 +2,23 @@
 using namespace std;
 class user
 {
-private:
+public:
     string username;
     string password;
     string name;
     string list_of_tickets;
-public:
-    user(string Username,
-         string Password,
-         string Name,
-         string List_of_tickets
-        ) 
-    {
-        username = Username;
-        password = Password;
-        name = Name;
-        list_of_tickets = List_of_tickets;         
-    }
+
+    // user(string Username,
+    //      string Password,
+    //      string Name,
+    //      string List_of_tickets
+    //     ) 
+    // {
+    //     username = Username;
+    //     password = Password;
+    //     name = Name;
+    //     list_of_tickets = List_of_tickets;         
+    // }
     // void register()
     // { 
     //     string Name,Username,Password;
@@ -39,20 +39,23 @@ public:
     
     
 };
- void registe(int flag,user Flag)
+ void newregister(int flag,user Flag)
     { 
         string Name,Username,Password,List_of_tickets;
         cout<< "Enter name\n";
-        cin>>Name;
+        cin>>Flag.name;
         cout<<"Enter username\n";
-        cin>>Username;
+        cin>>Flag.username;
         cout<<"Enter password\n";
-        cin>>Password;
-        Flag = user(Username,Password,Name,List_of_tickets);
+        cin>>Flag.password;
+        
     }
 int main() 
 
 {
+    user number1;
     int flag = 0; //number of users
+    newregister(flag,number1);
+    cout<<"\n"<<number1.name;
     
 }

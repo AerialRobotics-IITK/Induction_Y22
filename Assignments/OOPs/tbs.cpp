@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 class user
 {
 public:
@@ -11,8 +12,7 @@ public:
     // user(string Username,
     //      string Password,
     //      string Name,
-    //      string List_of_tickets
-    //     ) 
+    //      string List_of_tickets)
     // {
     //     username = Username;
     //     password = Password;
@@ -39,23 +39,30 @@ public:
     
     
 };
- void newregister(int flag,user Flag)
+user* userdata[1000];
+ void newregister(int* flagptr,user* Flag)
     { 
         string Name,Username,Password,List_of_tickets;
         cout<< "Enter name\n";
-        cin>>Flag.name;
+        cin>>(*Flag).name;
         cout<<"Enter username\n";
-        cin>>Flag.username;
+        cin>>(*Flag).username;
         cout<<"Enter password\n";
-        cin>>Flag.password;
+        cin>>(*Flag).password;
+        userdata[*flagptr] = Flag;
+        (*flagptr)++;
+
+    
         
     }
 int main() 
 
 {
     user number1;
+    // user* userdata[];
+    user* ptr1 = &number1;
     int flag = 0; //number of users
-    newregister(flag,number1);
-    cout<<"\n"<<number1.name;
-    
+    int* flagptr = &flag;
+    newregister(flagptr,ptr1);
+    cout<<"\n"<<number1.name<<*flagptr;    
 }

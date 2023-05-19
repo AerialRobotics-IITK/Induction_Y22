@@ -1,3 +1,4 @@
+#include<iostream>
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -39,8 +40,10 @@ public:
     
     
 };
-user* userdata[1000];
- void newregister(int* flagptr,user* Flag)
+user* userdata[1000]; //array of pointer to users
+int flag = 0; //number of users
+int* flagptr = &flag;
+ void newpassengerregister(int* flagptr,user* Flag)
     { 
         string Name,Username,Password,List_of_tickets;
         cout<< "Enter name\n";
@@ -49,8 +52,9 @@ user* userdata[1000];
         cin>>(*Flag).username;
         cout<<"Enter password\n";
         cin>>(*Flag).password;
+        (*flagptr)+=1;
         userdata[*flagptr] = Flag;
-        (*flagptr)++;
+        
 
     
         
@@ -58,11 +62,46 @@ user* userdata[1000];
 int main() 
 
 {
-    user number1;
-    // user* userdata[];
-    user* ptr1 = &number1;
-    int flag = 0; //number of users
-    int* flagptr = &flag;
-    newregister(flagptr,ptr1);
-    cout<<"\n"<<number1.name<<*flagptr;    
+    // int flag; //number of users
+    // int* flagptr = &flag;
+    // *flagptr=0;
+    // cout<<"\n"<<*flagptr<<"\n";
+    cout<<"Press RP to signup as passenger\n"<<
+                "LP to login as passenger\n";
+    string loginpage;
+    cin>> loginpage;
+    if(loginpage == "RP")
+        {
+            // (*flagptr)+=1;
+            user temp;
+            userdata[flag] = &temp;
+            newpassengerregister(flagptr,userdata[*flagptr]);
+            cout<<"User successfully registered with unique id "<<*flagptr<<"\n";
+
+        }
+
+
+        
+    else if(loginpage == "LP")
+       {
+        int tempid;
+        string temppass;
+        cout<<"Enter uid(unique id) ";
+        cin>>tempid;
+        cout<<"Enter password ";
+        cin>>temppass;
+        if((*(userdata[tempid])).password == temppass)
+        {
+            cout<<"logged in successfully \n";
+        }
+        else
+        {
+            cout<<"wrong unique id or password \nPlease try again\n";
+        }
+       }
+       main();
+
+    
+    cout<<"\n\n\n"<<"\n"<<*flagptr;    
+    return 0;
 }

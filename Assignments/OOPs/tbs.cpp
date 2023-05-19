@@ -8,8 +8,22 @@ public:
     string username;
     string password;
     string name;
-    string list_of_tickets;
+    int nt = 0; //number of tickets
+    pair<int,int> tickets[100];
+ 
+    
 
+
+    void viewTickets()
+    {
+        
+        for(int i=0;i<nt;i++)
+            {
+            cout<<tickets[i].first <<" "<<tickets[i].second;
+            i++;
+            }
+    }
+    void bookTicket
     // user(string Username,
     //      string Password,
     //      string Name,
@@ -54,11 +68,8 @@ int* flagptr = &flag;
         cin>>(*Flag).password;
         (*flagptr)+=1;
         userdata[*flagptr] = Flag;
-        
-
-    
-        
     }
+ 
 int main() 
 
 {

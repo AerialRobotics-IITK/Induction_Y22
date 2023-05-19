@@ -23,7 +23,13 @@ public:
             i++;
             }
     }
-    void bookTicket
+    void bookTicket(int x,int y)
+    {
+        nt++;
+        tickets[nt].first = x;
+        tickets[nt].second = y;
+        cout<<"ticket booked succefully,cost of travel is "<<(x-y)*10;
+    }
     // user(string Username,
     //      string Password,
     //      string Name,
@@ -77,7 +83,7 @@ int main()
     // int* flagptr = &flag;
     // *flagptr=0;
     // cout<<"\n"<<*flagptr<<"\n";
-    cout<<"Press RP to signup as passenger\n"<<
+    cout<<"Type RP to signup as passenger\n"<<
                 "LP to login as passenger\n";
     string loginpage;
     cin>> loginpage;
@@ -88,6 +94,7 @@ int main()
             userdata[flag] = &temp;
             newpassengerregister(flagptr,userdata[*flagptr]);
             cout<<"User successfully registered with unique id "<<*flagptr<<"\n";
+            main();
 
         }
 
@@ -95,7 +102,7 @@ int main()
         
     else if(loginpage == "LP")
        {
-        int tempid;
+        int tempid;    //for verification
         string temppass;
         cout<<"Enter uid(unique id) ";
         cin>>tempid;
@@ -103,16 +110,41 @@ int main()
         cin>>temppass;
         if((*(userdata[tempid])).password == temppass)
         {
+            string bookorview;
             cout<<"logged in successfully \n";
+            cout<<"Type viewtickets to view old tickets\nor\nbookticket to book new ticket ";
+            cin>>bookorview;
+            if(bookorview == "viewtickets")
+               {
+                (*(userdata[tempid])).viewTickets();
+               }
+            else if(bookorview == "bookticket")
+            {
+                int sp; //starting point
+                int ep; //end point
+                cout<<"enter starting station";
+                cin>>sp;
+                cout<<"enter destination";
+                cin>>ep;
+                 (*(userdata[tempid])).bookTicket(sp,ep);
+                
+            }   
+
+
+
         }
+        
+
+
         else
         {
             cout<<"wrong unique id or password \nPlease try again\n";
+            main();
         }
        }
-       main();
+       
 
     
-    cout<<"\n\n\n"<<"\n"<<*flagptr;    
+    cout<<"\n\n\n"<<"\n"<<*flagptr;   // 
     return 0;
 }

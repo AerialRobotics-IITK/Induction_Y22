@@ -1,6 +1,14 @@
-#include<iostream>
 #include <bits/stdc++.h>
 using namespace std;
+class ticket
+{
+    public:
+    pair<int,int> startpoint;
+    pair<int,int> endpoint;
+    pair<pair<int,int>,pair<int,int>> ticketcoordinates[1000];
+    string date;
+    int cost;
+};
 
 class user
 {
@@ -8,62 +16,27 @@ public:
     string username;
     string password;
     string name;
-    int nt = 0; //number of tickets
-    pair<int,int> tickets[100];
- 
-    
+    int nt = 0; //number of tickets 
+    ticket* usertickets;
 
-
-    void viewTickets()
-    {
-        
-        for(int i=0;i<nt;i++)
-            {
-            cout<<tickets[i].first <<" "<<tickets[i].second;
-            i++;
-            }
-    }
-    void bookTicket(int x,int y)
+    void bookTicket(int a,int b,int c,int d)
     {
         nt++;
-        tickets[nt].first = x;
-        tickets[nt].second = y;
-        cout<<"ticket booked succefully,cost of travel is "<<(x-y)*10;
+        (((*usertickets).ticketcoordinates[nt]).first).first = a;
+        (((*usertickets).ticketcoordinates[nt]).first).second = b;
+        (((*usertickets).ticketcoordinates[nt]).second).first = c;
+        (((*usertickets).ticketcoordinates[nt]).second).second = d;
     }
-    // user(string Username,
-    //      string Password,
-    //      string Name,
-    //      string List_of_tickets)
-    // {
-    //     username = Username;
-    //     password = Password;
-    //     name = Name;
-    //     list_of_tickets = List_of_tickets;         
-    // }
-    // void register()
-    // { 
-    //     string Name,Username,Password;
-    //     cout>> "Enter Name\n";
-    //     cin<<"Name";
-    //     cout>>"Enter username\n";
-    //     cin<<"Username";
-    //     cout<<"Enter password\n";
-    //     cin>>"Password";
-    //     user(Username,Password,Name,List_of_tickets);
-        
-    // }
-    // void setName(string Name)
-    // {
-    //     name = Name;
-    // }
 
-    
-    
+
 };
+
 user* userdata[1000]; //array of pointer to users
-int flag = 0; //number of users
-int* flagptr = &flag;
- void newpassengerregister(int* flagptr,user* Flag)
+ticket* ticketdata[1000];//array of pointer to tickets
+int nuser= 0; //number of users
+int* nuserptr = &nuser;
+ 
+void newpassengerregister(int* nuserptr,user* Flag)
     { 
         string Name,Username,Password,List_of_tickets;
         cout<< "Enter name\n";
@@ -72,35 +45,30 @@ int* flagptr = &flag;
         cin>>(*Flag).username;
         cout<<"Enter password\n";
         cin>>(*Flag).password;
-        (*flagptr)+=1;
-        userdata[*flagptr] = Flag;
+        (*nuserptr)+=1;
+        userdata[*nuserptr] = Flag;
     }
  
 int main() 
 
 {
-    // int flag; //number of users
-    // int* flagptr = &flag;
-    // *flagptr=0;
-    // cout<<"\n"<<*flagptr<<"\n";
+    // int* nuserptr = &nuser;
+    // *nuserptr=0;
+    // cout<<"\n"<<*nuserptr<<"\n";
     cout<<"Type RP to signup as passenger\n"<<
                 "LP to login as passenger\n";
     string loginpage;
     cin>> loginpage;
     if(loginpage == "RP")
         {
-            // (*flagptr)+=1;
             user temp;
-            userdata[flag] = &temp;
-            newpassengerregister(flagptr,userdata[*flagptr]);
-            cout<<"User successfully registered with unique id "<<*flagptr<<"\n";
+            userdata[nuser] = &temp;
+            newpassengerregister(nuserptr,userdata[*nuserptr]);
+            cout<<"User successfully registered with unique id "<<*nuserptr<<"\n";
             main();
 
         }
-
-
-        
-    else if(loginpage == "LP")
+     else if(loginpage == "LP")
        {
         int tempid;    //for verification
         string temppass;
@@ -108,28 +76,46 @@ int main()
         cin>>tempid;
         cout<<"Enter password ";
         cin>>temppass;
+
         if((*(userdata[tempid])).password == temppass)
         {
             string bookorview;
             cout<<"logged in successfully \n";
-            cout<<"Type viewtickets to view old tickets\nor\nbookticket to book new ticket ";
+            cout<<"Type viewtickets to view old tickets\nor\nbookticket to book new ticket\nor\nR to return to login portal ";
             cin>>bookorview;
-            if(bookorview == "viewtickets")
-               {
-                (*(userdata[tempid])).viewTickets();
-               }
-            else if(bookorview == "bookticket")
+            while(bookorview!="R")
             {
-                int sp; //starting point
-                int ep; //end point
-                cout<<"enter starting station";
-                cin>>sp;
-                cout<<"enter destination";
-                cin>>ep;
-                 (*(userdata[tempid])).bookTicket(sp,ep);
-                
-            }   
+              if(bookorview == "viewtickets")
+               {
+                   for(int i=0;i<(*(userdata[tempid])).nt;i++)
+                   {
+                        cout<<"Journey "<<i<<" details\nsource - ";
+                        cout<<(((*((*(userdata[tempid])).usertickets)).ticketcoordinates[i]).first).first;
+                        cout<<","<<(((*((*(userdata[tempid])).usertickets)).ticketcoordinates[i]).first).second;
+                        cout<<"\ndestination - "<<(((*((*(userdata[tempid])).usertickets)).ticketcoordinates[i]).second).first;
+                        cout<<","<<(((*((*(userdata[tempid])).usertickets)).ticketcoordinates[i]).second).second;
 
+
+
+
+                   }
+               }
+              else if(bookorview == "bookticket")
+              {
+                int sp1,sp2; //starting point
+                int ep1,ep2; //end point
+                cout<<"enter starting station ";
+                cin>>sp1>>sp2;
+                cout<<"enter destination";
+                cin>>ep1>>ep2;
+                (*(userdata[tempid])).bookTicket(sp1,sp2,ep1,ep2);
+                cout<<"ticket book successfully";
+    
+                
+              }   
+            }
+        
+        
 
 
         }
@@ -145,6 +131,6 @@ int main()
        
 
     
-    cout<<"\n\n\n"<<"\n"<<*flagptr;   // 
+    cout<<"\n\n\n"<<"\n"<<*nuserptr;   // 
     return 0;
 }

@@ -19,22 +19,28 @@ public:
     int nt = 0; //number of tickets 
     ticket* usertickets;
 
-    void bookTicket(int a,int b,int c,int d)
-    {
-        nt++;
-        (((*usertickets).ticketcoordinates[nt]).first).first = a;
-        (((*usertickets).ticketcoordinates[nt]).first).second = b;
-        (((*usertickets).ticketcoordinates[nt]).second).first = c;
-        (((*usertickets).ticketcoordinates[nt]).second).second = d;
-    }
 
 
 };
+int tempid;    //for verification
+int* tempidptr = &tempid;
+
 
 user* userdata[1000]; //array of pointer to users
+void bookTicket(int a,int b,int c,int d)
+    {
+         (*userdata[*tempidptr]).nt ++;
+        
+        (((*((*userdata[*tempidptr]).usertickets)).ticketcoordinates[(*userdata[*tempidptr]).nt]).first).first = a;
+        (((*((*userdata[*tempidptr]).usertickets)).ticketcoordinates[(*userdata[*tempidptr]).nt]).first).second = b;
+        (((*((*userdata[*tempidptr]).usertickets)).ticketcoordinates[(*userdata[*tempidptr]).nt]).second).first = c;
+        (((*((*userdata[*tempidptr]).usertickets)).ticketcoordinates[(*userdata[*tempidptr]).nt]).second).second = d;
+
+    }
 ticket* ticketdata[1000];//array of pointer to tickets
 int nuser= 0; //number of users
 int* nuserptr = &nuser;
+
  
 void newpassengerregister(int* nuserptr,user* Flag)
     { 
@@ -52,11 +58,8 @@ void newpassengerregister(int* nuserptr,user* Flag)
 int main() 
 
 {
-    // int* nuserptr = &nuser;
-    // *nuserptr=0;
-    // cout<<"\n"<<*nuserptr<<"\n";
     cout<<"Type RP to signup as passenger\n"<<
-                "LP to login as passenger\n";
+                "or LP to login as passenger\n";
     string loginpage;
     cin>> loginpage;
     if(loginpage == "RP")
@@ -70,7 +73,8 @@ int main()
         }
      else if(loginpage == "LP")
        {
-        int tempid;    //for verification
+        // int tempid;    //for verification
+        // int* tempidptr = &tempid;
         string temppass;
         cout<<"Enter uid(unique id) ";
         cin>>tempid;
@@ -83,6 +87,10 @@ int main()
             cout<<"logged in successfully \n";
             cout<<"Type viewtickets to view old tickets\nor\nbookticket to book new ticket\nor\nR to return to login portal ";
             cin>>bookorview;
+            if(bookorview=="R")
+            {
+                main();
+            }
             while(bookorview!="R")
             {
               if(bookorview == "viewtickets")
@@ -106,13 +114,22 @@ int main()
                 int ep1,ep2; //end point
                 cout<<"enter starting station ";
                 cin>>sp1>>sp2;
-                cout<<"enter destination";
+                cout<<"enter destination ";
                 cin>>ep1>>ep2;
-                (*(userdata[tempid])).bookTicket(sp1,sp2,ep1,ep2);
-                cout<<"ticket book successfully";
+                // (*(userdata[tempid])).bookTicket(sp1,sp2,ep1,ep2);
+                bookTicket(sp1,sp2,ep1,ep2);
+
+                cout<<"ticket book successfully\n";
+                cout<<"Type viewtickets to view old tickets\nor\nbookticket to book new ticket\nor\nR to return to login portal ";
+                cin>>bookorview;
+                if(bookorview=="R")
+                {
+                    main();
+                }
     
                 
               }   
+              
             }
         
         

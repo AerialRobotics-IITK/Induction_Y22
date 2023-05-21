@@ -189,7 +189,7 @@ int main() {
     city kanpur;
     kanpur.set("Kanpur", 10, 10);
     city jaipur;
-    jaipur.set("Kanpur", 20, 20);
+    jaipur.set("Jaipur", 20, 20);
     
 
     // Create trains with the seats and coach you can also atumate this 

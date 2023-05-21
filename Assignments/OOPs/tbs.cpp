@@ -5,7 +5,8 @@ class ticket
     public:
     pair<int,int> startpoint;
     pair<int,int> endpoint;
-    pair<pair<int,int>,pair<int,int>> ticketcoordinates[1000];
+    // pair<pair<int,int>,pair<int,int>> ticketcoordinates[1000];
+    pair<int,int> ticketcoordinates[1000];
     string date;
     int cost;
 };
@@ -27,14 +28,18 @@ int* tempidptr = &tempid;
 
 
 user* userdata[1000]; //array of pointer to users
-void bookTicket(int a,int b,int c,int d)
+void bookTicket(int a,int c)
     {
          (*userdata[*tempidptr]).nt ++;
         
-        (((*((*userdata[*tempidptr]).usertickets)).ticketcoordinates[(*userdata[*tempidptr]).nt]).first).first = a;
-        (((*((*userdata[*tempidptr]).usertickets)).ticketcoordinates[(*userdata[*tempidptr]).nt]).first).second = b;
-        (((*((*userdata[*tempidptr]).usertickets)).ticketcoordinates[(*userdata[*tempidptr]).nt]).second).first = c;
-        (((*((*userdata[*tempidptr]).usertickets)).ticketcoordinates[(*userdata[*tempidptr]).nt]).second).second = d;
+        // (((*((*userdata[*tempidptr]).usertickets)).ticketcoordinates[(*userdata[*tempidptr]).nt]).first).first = a;
+        ((*((*userdata[*tempidptr]).usertickets)).ticketcoordinates[(*userdata[*tempidptr]).nt]).first = a;
+
+        // (((*((*userdata[*tempidptr]).usertickets)).ticketcoordinates[(*userdata[*tempidptr]).nt]).first).second = b;
+        // (((*((*userdata[*tempidptr]).usertickets)).ticketcoordinates[(*userdata[*tempidptr]).nt]).second).first = c;
+        ((*((*userdata[*tempidptr]).usertickets)).ticketcoordinates[(*userdata[*tempidptr]).nt]).second = c;
+
+        // (((*((*userdata[*tempidptr]).usertickets)).ticketcoordinates[(*userdata[*tempidptr]).nt]).second).second = d;
 
     }
 ticket* ticketdata[1000];//array of pointer to tickets
@@ -91,33 +96,35 @@ int main()
             {
                 main();
             }
-            while(bookorview!="R")
-            {
-              if(bookorview == "viewtickets")
+            if(bookorview == "viewtickets")
                {
                    for(int i=0;i<(*(userdata[tempid])).nt;i++)
                    {
                         cout<<"Journey "<<i<<" details\nsource - ";
-                        cout<<(((*((*(userdata[tempid])).usertickets)).ticketcoordinates[i]).first).first;
-                        cout<<","<<(((*((*(userdata[tempid])).usertickets)).ticketcoordinates[i]).first).second;
-                        cout<<"\ndestination - "<<(((*((*(userdata[tempid])).usertickets)).ticketcoordinates[i]).second).first;
-                        cout<<","<<(((*((*(userdata[tempid])).usertickets)).ticketcoordinates[i]).second).second;
+                        // cout<<(((*((*(userdata[tempid])).usertickets)).ticketcoordinates[i]).first).first;
+                        cout<<(((*((*(userdata[tempid])).usertickets)).ticketcoordinates[i]).first);
+
+                        // cout<<","<<(((*((*(userdata[tempid])).usertickets)).ticketcoordinates[i]).first).second;
+                        // cout<<"\ndestination - "<<(((*((*(userdata[tempid])).usertickets)).ticketcoordinates[i]).second).first;
+                        cout<<"\ndestination - "<<(((*((*(userdata[tempid])).usertickets)).ticketcoordinates[i]).second);
+
+                        // cout<<","<<(((*((*(userdata[tempid])).usertickets)).ticketcoordinates[i]).second).second;
 
 
 
 
                    }
                }
-              else if(bookorview == "bookticket")
+            else if(bookorview == "bookticket")
               {
-                int sp1,sp2; //starting point
-                int ep1,ep2; //end point
+                int sp1; //starting point
+                int ep1; //end point
                 cout<<"enter starting station ";
-                cin>>sp1>>sp2;
+                cin>>sp1;
                 cout<<"enter destination ";
-                cin>>ep1>>ep2;
+                cin>>ep1;
                 // (*(userdata[tempid])).bookTicket(sp1,sp2,ep1,ep2);
-                bookTicket(sp1,sp2,ep1,ep2);
+                bookTicket(sp1,ep1);
 
                 cout<<"ticket book successfully\n";
                 cout<<"Type viewtickets to view old tickets\nor\nbookticket to book new ticket\nor\nR to return to login portal ";

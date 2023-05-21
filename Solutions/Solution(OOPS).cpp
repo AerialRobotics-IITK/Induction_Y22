@@ -104,9 +104,10 @@ private:
     std::vector<Ticket> bookedTickets;
 
 public:
-    Train(int numCoaches, int numBerthsPerCoach)
-        : coaches(numCoaches), berthsPerCoach(numBerthsPerCoach) {}
-
+    void set(int Coaches, int BerthsPerCoach) {
+        coaches = Coaches;
+        berthsPerCoach = BerthsPerCoach;
+    }
     int getAvailableSeats() const {
         return coaches * berthsPerCoach;
     }
@@ -195,8 +196,10 @@ int main() {
     std::string adminPassword = "password123";
     Admin admin(adminID, adminPassword);
     // Adding sample trains to the schedule
-    Train train1(2, 4);
-    Train train2(2, 4);
+    Train train1;
+    train1.set(2, 4);
+    Train train2;
+    train2.set(2, 4);
     trainSchedule.addTrain("2023-05-21", train1);
     trainSchedule.addTrain("2023-05-22", train2);
     //Prepopulating
@@ -215,16 +218,18 @@ int main() {
             std::cout << "Enter your username: ";
             std::getline(std::cin, input);
 
-            Passenger* passenger = nullptr;
-            for (auto& p : passengers) {
-                if (p.getUsername() == input) {
-                    passenger = &p;
+            auto passenger = passengers.begin();
+            bool found = 0;
+            for(; passenger != passengers.end(); passenger++)
+                if( passenger->getUsername() == input ) {
+                    found = 1;
                     break;
                 }
-            }
+            
 
-            if (passenger) {
+            if (found == 1) {
                 std::cout << "Enter your password: ";
+                std::getline(std::cin, input);
                 if (passenger->verifyPass(passenger->getUsername(), input)) {
         std::cout << "Welcome, " << passenger->getName() << "!" << std::endl;
         while (true) {

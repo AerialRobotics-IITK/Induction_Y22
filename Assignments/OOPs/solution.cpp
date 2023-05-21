@@ -4,8 +4,6 @@
 #include <algorithm>
 
 using namespace std;
-class passenger;
-class train;
 
 class city {
     string cityN;
@@ -13,8 +11,11 @@ class city {
     int ycrd;
 
 public:
-    city(string cityN, int xcrd, int ycrd)
-        : cityN(cityN), xcrd(xcrd), ycrd(ycrd) {}
+    void set(string CityN, int Xcrd, int Ycrd) {
+        cityN = CityN;
+        xcrd = Xcrd;
+        ycrd = Ycrd;
+    }
 
     string getcityname() const {
         return cityN;
@@ -29,7 +30,7 @@ public:
     }
 };
 
-class ticket {
+class Ticket {
     string begcity;
     string destcity;
     string date;
@@ -38,9 +39,14 @@ class ticket {
     int seatno;
 
 public:
-    Ticket(string begcity, string destcity, string date, int cost, int coachno, int seatno)
-        : begcity(begcity), destcity(destcity), date(date),
-          cost(cost), coachno(coachno), seatno(seatno) {}
+    Ticket(string Begcity, string Destcity, string Date, int Cost, int Coachno, int Seatno) {
+        begcity = Begcity;
+        destcity = Destcity;
+        date = Date;
+        cost = Cost;
+        coachno = Coachno;
+        seatno = Seatno;
+    }
 
     void printTicket() const {
         cout << "Beginning City: " << begcity << endl;
@@ -49,16 +55,55 @@ public:
         cout << "Cost of Ticket: Rs. " << cost << endl;
         cout << "Coach No.: " << coachno << endl << "Seat No.: " << seatno << endl;
     }
+    string getbeg() {
+        return begcity;
+    }
 };
 
+class Train {
+    city start;
+    city end;
+    string date;
+    vector<pair<int, int>> bookedTickets;
+
+public:
+    Train(const city& Start, const city& End, string Date, const vector<pair<int, int>>& BookedTickets) {
+        start = Start;
+        end = End;
+        date = Date;
+        bookedTickets = BookedTickets;
+    }
+
+    const city& getscity() const {
+        return start;
+    }
+
+    const city& getecity() const {
+        return end;
+    }
+
+    const string& getDate() const {
+        return date;
+    }
+
+    const vector<pair<int, int>>& getBookedTickets() const {
+        return bookedTickets;
+    }
+
+    bool isTicketAvailable(int coachNo, int seatNo) const;
+    void bookPassengerTicket(int coachNo, int seatNo);
+};
 class Passenger {
     string name;
     string username;
     string password;
 
 public:
-    Passenger(string name, string username, string password)
-        : name(name), username(username), password(password) {}
+    Passenger(string Name, string Username, string Password) {
+        name = Name;
+        username = Username;
+        password = Password;
+    }
 
     string getusername() const {
         return username;
@@ -71,45 +116,15 @@ public:
     Ticket bookTicket(const Train& train, const string& date);
 };
 
-class Train {
-    City start;
-    City end;
-    string date;
-    vector<pair<int, int>> bookedTickets;
-
-public:
-    Train(const City& start, const City& end, string date, const vector<pair<int, int>>& bookedTickets)
-        : start(start), end(end), date(date), bookedTickets(bookedTickets) {}
-
-    const City& getscity() const {
-        return start;
-    }
-
-    const City& getecity() const {
-        return end;
-    }
-
-    const string& getDate() const {
-        return date;
-    }
-
-    const vector<pair<int, int>>& getBookedTickets() const {
-        return bookedTickets;
-    }
-
-    bool isticketavial(int coachNo, int seatNo) const;
-    void bookPassengerTicket(int coachNo, int seatNo);
-};
-
 Ticket Passenger::bookTicket(const Train& train, const string& date) {
-    if (date == train.getdate()) {
+    if (date == train.getDate()) {
         cout << "Sorry, the ticket cannot be booked on the same date as the journey." << endl;
         return Ticket("", "", "", 0, 0, 0);
     }
 
-    const City& startcity = train.getscity();
-    const City& endcity = train.getecity();
-    int cost = abs(startcity.getXCrd() - endcity.getXCrd()) +
+    const city& startcity = train.getscity();
+    const city& endcity = train.getecity();
+    int cost = abs(startcity.getXcrd() - endcity.getXcrd()) +
                abs(startcity.getYCrd() - endcity.getYCrd());
 
     const vector<pair<int, int>>& bookedTickets = train.getBookedTickets();
@@ -128,17 +143,17 @@ Ticket Passenger::bookTicket(const Train& train, const string& date) {
                 }
             }
             if (!isTicketBooked) {
-                coachno = c;
-                seatno = s;
+                coachNo = c;
+                seatNo = s;
                 break;
             }
         }
-        if (coachno > 0 && seatno > 0) {
+        if (coachNo > 0 && seatNo > 0) {
             break;
         }
     }
 
-    if (coachno == 0 || seatno == 0) {
+    if (coachNo == 0 || seatNo == 0) {
         cout << "Sorry, no seats available." << endl;
         // returning an empty tickets as no tickets are aviable
         return Ticket("", "", "", 0, 0, 0);
@@ -147,12 +162,12 @@ Ticket Passenger::bookTicket(const Train& train, const string& date) {
     // Booking ticket
     Train& mtrain = const_cast<Train&>(train);
     mtrain.bookPassengerTicket(coachNo, seatNo);
-    return Ticket(startcity.getcityname(), endcity.getcityname(), date, cost, coachno, seatno);
+    return Ticket(startcity.getcityname(), endcity.getcityname(), date, cost, coachNo, seatNo);
 }
 
 bool Train::isTicketAvailable(int coachNo, int seatNo) const {
     for (const auto& ticket : bookedTickets) {
-        if (coachno == ticket.first && seatno == ticket.second) {
+        if (coachNo == ticket.first && seatNo == ticket.second) {
             return false;
         }
     }
@@ -171,11 +186,14 @@ int main() {
     passengers.emplace_back("atulya", "e", "11");
 
     // make cities with random coordinates just to know where you are marking
-    city kanpur("Kanpur", 10, 10);
+    city kanpur;
+    kanpur.set("Kanpur", 10, 10);
+    city jaipur;
+    jaipur.set("Kanpur", 20, 20);
     
 
     // Create trains with the seats and coach you can also atumate this 
-    Train t1(kanpur, jaipur, "1st May", { {1, 1}, {1, 2}, {1, 3}, {1, 4}, {2, 1}, {2, 2}, {2, 3}, {2, 4} });
+    Train t1(kanpur, jaipur, "1st May", {{1, 1}, {1, 2}, {1, 3}, {1, 4}, {2, 1}, {2, 2}, {2, 3}, {2, 4}});
 
     vector<Train> trains = { t1 };
 
@@ -243,3 +261,4 @@ int main() {
         cout << "Invalid choice." << endl;
     } return 0;}
     
+

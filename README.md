@@ -228,6 +228,8 @@ You should see a window pop up with your camera feed.
 
 > Pretty long. Recommended to look a the code given and see the end products. You can skip over the part where the code is being written. Don't worry, it won't take more than 2 hours to familiarize yourself
 
+- You can also go through these lec if you like: [Photogrammetry](https://www.ipb.uni-bonn.de/photo12-2021/)
+- For CNNs and other aspects of DL, you can try these: [DL/CNNs](https://www.coursera.org/specializations/deep-learning)
 - Knowing the concepts always helps: [Theory](https://web.stanford.edu/class/ee368/handouts.html)
 
 - YOLO (You Only Look Once) is a real-time object detection system that uses a deep neural network and is implemented using the Darknet neural network framework. The Darknet framework is an open-source neural network framework written in C and CUDA, and it is optimized for both CPU and GPU computing.[Official Github Repo](https://github.com/AlexeyAB/darknet)

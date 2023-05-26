@@ -107,7 +107,7 @@ if not cap.isOpened():
     print("Unable to open the camera.")
     
 # Warm up the camera by reading frames for a short period
-warmup_duration = 2  # Adjust this value if needed
+warmup_duration = 2  
 start_time = time.time()
 while time.time() - start_time < warmup_duration:
     ret, frame = cap.read()

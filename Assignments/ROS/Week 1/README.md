@@ -19,7 +19,7 @@
 -  this builds all the packages present in the directory
 -  if the build fails it is possible that hector plugins are missing install them using
 -  '''bash
--  sudo apt-get install ros-noetic-hector-gazebo-plugins
+-       sudo apt-get install ros-noetic-hector-gazebo-plugins
 -  '''
 -  run the package using
 -  '''bash

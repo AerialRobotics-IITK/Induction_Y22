@@ -34,11 +34,11 @@
 -  complete the other tasks using
 -  
 -  '''bash
--        rosnode list
--        rostopic list
--        rostopic echo [TOPIC]
--        rostopic hz [TOPIC]
--        rqt_graph
+        rosnode list
+        rostopic list
+        rostopic echo [TOPIC]
+        rostopic hz [TOPIC]
+        rqt_graph
 -  '''
 -
 -   publish to a topic directly using "pub"

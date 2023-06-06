@@ -5,18 +5,28 @@
 - Most details are commented in setup.bash but here we go
 - first we download the exercise file from the site in ~/Git 
 - then we unzip it right there using
-- '''unzip smb_common.zip'''
+- '''bash
+- unzip smb_common.zip
+- '''
 - create a symlink between the unzipped folder and ~/Workspaces/smb_ws/src 
-- ln -s ~/Git/smb_common ~/Workspaces/smb_common/src
+-'''bash
+        ln -s ~/Git/smb_common ~/Workspaces/smb_common/src
+        '''
 - compile the package by
--  catkin build
+-  '''bash
+-     catkin build
+-  '''
 -  this builds all the packages present in the directory
 -  if the build fails it is possible that hector plugins are missing install them using
+-  '''bash
 -  sudo apt-get install ros-noetic-hector-gazebo-plugins
--  run the package using
--  roslaunch smb_gazebo smb_gazebo.launch
--  complete the other tasks using
 -  '''
+-  run the package using
+-  '''bash
+-         roslaunch smb_gazebo smb_gazebo.launch
+-         '''
+-  complete the other tasks using
+-  '''bash
 -  rosnode list
 rostopic list
 rostopic echo [TOPIC]

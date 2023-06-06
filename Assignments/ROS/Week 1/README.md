@@ -11,7 +11,7 @@
 - create a symlink between the unzipped folder and ~/Workspaces/smb_ws/src 
 -'''bash
         ln -s ~/Git/smb_common ~/Workspaces/smb_common/src
-        '''
+ '''
 - compile the package by
 -  '''bash
 -     catkin build
@@ -24,11 +24,12 @@
 -  run the package using
 -  '''bash
 -         roslaunch smb_gazebo smb_gazebo.launch
--         '''
+-  '''
 -  complete the other tasks using
 -  '''bash
--  rosnode list
-rostopic list
-rostopic echo [TOPIC]
-rostopic hz [TOPIC]
-rqt_graph'''
+-       rosnode list
+        rostopic list
+        rostopic echo [TOPIC]
+        rostopic hz [TOPIC]
+        rqt_graph
+'''

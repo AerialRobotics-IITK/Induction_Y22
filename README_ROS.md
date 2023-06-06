@@ -42,7 +42,8 @@ rostopic list
 rostopic echo [TOPIC]
 rostopic hz [TOPIC]
 rqt_graph
-'''  
+```
+
 
 ## 3.Command a velocity  
 To command a desired velocity to the robot in the simulation, we directly publish a message with the velocity command to the topic "/cmd_vel",  

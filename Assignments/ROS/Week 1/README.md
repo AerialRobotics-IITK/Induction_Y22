@@ -13,8 +13,8 @@
 - create a symlink between the unzipped folder and ~/Workspaces/smb_ws/src 
 - 
 -'''bash
-        ln -s ~/Git/smb_common ~/Workspaces/smb_common/src
- '''
+-        ln -s ~/Git/smb_common ~/Workspaces/smb_common/src
+-'''
 - compile the package by
 - 
 -  '''bash

@@ -8,7 +8,7 @@
 
 
 - '''bash
-- unzip smb_common.zip
+-       unzip smb_common.zip
 - '''
 - create a symlink between the unzipped folder and ~/Workspaces/smb_ws/src 
 - 
@@ -34,7 +34,7 @@
 -  complete the other tasks using
 -  
 -  '''bash
-        rosnode list
+-        rosnode list
         rostopic list
         rostopic echo [TOPIC]
         rostopic hz [TOPIC]

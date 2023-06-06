@@ -34,22 +34,22 @@
 -  complete the other tasks using
 -  
 -  '''bash
--       rosnode list
-        rostopic list
-        rostopic echo [TOPIC]
-        rostopic hz [TOPIC]
-        rqt_graph
-'''
-
-   publish to a topic directly using "pub"
-   '''bash
-         rostopic pub /cmd_vel geometry_msgs/Twist '[0.5,0,0]' '[0,0,0]'
-   '''
-   here the syntax goes like rostopic pub [TOPIC] [DATA TYPE] [DATA]
-   
-   
-   for the next part I kinda messed up the compile from source part and installed it directly so i am unable to describe that process
-   teleop runs by--
-   '''bash
-                rosrun teleop_twist_keyboard teleop_twist_keyboard.py
-   '''
+-        rosnode list
+-        rostopic list
+-        rostopic echo [TOPIC]
+-        rostopic hz [TOPIC]
+-        rqt_graph
+-  '''
+-
+-   publish to a topic directly using "pub"
+-   '''bash
+-         rostopic pub /cmd_vel geometry_msgs/Twist '[0.5,0,0]' '[0,0,0]'
+-   '''
+-   here the syntax goes like rostopic pub [TOPIC] [DATA TYPE] [DATA]
+-   
+-   
+-   for the next part I kinda messed up the compile from source part and installed it directly so i am unable to describe that process
+-   teleop runs by--
+-   '''bash
+-                rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+-   '''

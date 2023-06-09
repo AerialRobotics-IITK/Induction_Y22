@@ -1,0 +1,31 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/kaptaan/IIT_Kanpur/Teams/Aerial_Robotics/rotors_ws/devel/include/**",
+        "/home/kaptaan/Programming/ROS/noetic/Workspaces/practice_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/kaptaan/IIT_Kanpur/Teams/Aerial_Robotics/rotors_ws/src/mav_comm/mav_msgs/include/**",
+        "/home/kaptaan/IIT_Kanpur/Teams/Aerial_Robotics/rotors_ws/src/mav_comm/mav_planning_msgs/include/**",
+        "/home/kaptaan/Programming/ROS/noetic/Workspaces/practice_ws/src/practice_1/include/**",
+        "/home/kaptaan/IIT_Kanpur/Teams/Aerial_Robotics/rotors_ws/src/rotors_simulator/rotors_control/include/**",
+        "/home/kaptaan/IIT_Kanpur/Teams/Aerial_Robotics/rotors_ws/src/rotors_simulator/rotors_gazebo_plugins/include/**",
+        "/home/kaptaan/IIT_Kanpur/Teams/Aerial_Robotics/rotors_ws/src/rotors_simulator/rotors_hil_interface/include/**",
+        "/home/kaptaan/IIT_Kanpur/Teams/Aerial_Robotics/rotors_ws/src/rotors_simulator/rotors_joy_interface/include/**",
+        "/home/kaptaan/Workspaces/smb_ws/src/smb_gazebo/include/**",
+        "/home/kaptaan/Workspaces/smb_ws/src/smb_highlevel_controller/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

@@ -68,7 +68,7 @@ SmbHighlevelController::~SmbHighlevelController()
 }
 
 bool SmbHighlevelController::readParameters() {
-	if(!nodeHandle_.getParam("/smb_high level_controller/scan_subscriber_queue_size", subscriberQueueSize_)){
+	if(!nodeHandle_.getParam("/smb_high_level_controller/scan_subscriber_queue_size", subscriberQueueSize_)){
 		return false;
 	}
 	if(!nodeHandle_.getParam("/smb_highlevel_controller/scan_subscriber_topic_name", scanTopic_)) {
@@ -77,7 +77,7 @@ bool SmbHighlevelController::readParameters() {
 	if(!nodeHandle_.getParam("/smb_highlevel_controller/twist_publisher_queue_size", publisherQueueSize_)) {
 		return false;
 	}
-	if(!nodeHandle_.getParam("/smb_high level_controller/twist_publisher_topic_name", twistTopic_)){
+	if(!nodeHandle_.getParam("/smb_high_level_controller/twist_publisher_topic_name", twistTopic_)){
 		return false;
 	}
 	return true;

@@ -6,8 +6,8 @@
     <arg name="world" value="$(arg world_name)" />
     <arg name="laser_enabled" value="$(arg laser)" />
   </include>
-  <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" />
-  <node name="smb_highlevel_controller" pkg="smb_highlevel_cotroller" type="smb_highlevel_controller" output="screen">
+  <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" launch-prefix="xterm -e" />
+  <node name="smb_highlevel_controller" pkg="smb_highlevel_controller" type="smb_highlevel_controller" output="screen">
     <rosparam command="load" file="$(find smb_highlevel_controller)/config/default.yaml" />
   </node>
   <node name="rviz" pkg="rviz" type="rviz" output="screen" />

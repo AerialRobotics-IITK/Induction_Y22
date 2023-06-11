@@ -7,5 +7,3 @@ rosrun smb_highlevel_controller smb_highlevel_controller
 ```bash
 roslaunch smb_highlevel_controller exercise_2.launch
 ```
-### Note
-The **teleop_twist_keyboard** package was setup in [Assignment 1](https://github.com/AerialRobotics-IITK/Induction_Y22/tree/gill_a/Assignments/ROS/Exercise_1)

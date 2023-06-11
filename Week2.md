@@ -132,15 +132,17 @@ twist_publisher_topic_name : /scan
 <p>the new launch file is:</p>
 <pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;launch&gt;
-
- &lt;!-- Laaunch ROS Package Template Node --&gt;
- &lt;node pkg="smb_highlevel_controller" type="smb_highlevel_controller" name="smb_highlevel_controller" output="screen"/&gt;
- 	&lt;rosparam file="~/catkin_ws/src/smb_highlevel_controller/param/param.yaml"/&gt;
-
- &lt;include file="~/Git/smb_common/smb_gazebo/launch/ex1launch.launch"/&gt;
-
- &lt;node pkg="rviz" type="rviz" name="rviz" output="screen"/&gt; 
-
+ &lt;arg name="world_name" default="big_map_summer_school" /&gt;
+ &lt;arg name="laser" default="true" /&gt;
+ &lt;include file="~/Workspaces/smb_ws/src/smb_gazebo/launch/smb_gazebo.launch"&gt;
+   &lt;arg name="world" value="$(arg world_name)" /&gt;
+   &lt;arg name="laser_enabled" value="$(arg laser)" /&gt;
+ &lt;/include&gt;
+ &lt;node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" /&gt;
+ &lt;node name="smb_highlevel_controller" pkg="smb_highlevel_cotroller" type="smb_highlevel_controller" output="screen"&gt;
+   &lt;rosparam command="load" file="$(find smb_highlevel_controller)/param/param.yaml" /&gt;
+ &lt;/node&gt;
+ &lt;node name="rviz" pkg="rviz" type="rviz" output="screen" /&gt;
 &lt;/launch&gt;
 </code></pre>
 <p>But due to constant error, I could not proceed further</p>

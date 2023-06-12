@@ -31,13 +31,13 @@ include_directories(
 )
 
 # Declare a C++ executable
-add_executable(${PROJECT_NAME}
+add_executable(${PROJECT_NAME}_node
   src/smb_highlevel_controller_node.cpp
-  include/smb_highlevel_controller/SmbHighlevelController.hpp
+  # include/smb_highlevel_controller/SmbHighlevelController.hpp
 )
 
 # Specify libraries to link a library or executable target against
-target_link_libraries(${PROJECT_NAME}
+target_link_libraries( ${PROJECT_NAME}_node
   ${catkin_LIBRARIES}
 )
 
@@ -45,12 +45,17 @@ target_link_libraries(${PROJECT_NAME}
 ## Install ##
 #############
 
+# set_target_properties(
+#     $(PROJECT_NAME)_node PROPERTIES
+#     RUNTIME_OUTPUT_DIRECTORY "src/smb_highlevel_controller/src"
+# )
+
 # Mark executables for installation
-install(TARGETS ${PROJECT_NAME}
-  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+install(TARGETS ${PROJECT_NAME}_node
+  RUNTIME DESTINATION src/smb_highlevel_controller/src
 )
 
 # Mark other files for installation (e.g. launch and bag files, etc.)
-# install(DIRECTORY launch config rviz
+# install(DIRECTORY launch config rviz      ${CATKIN_PACKAGE_BIN_DESTINATION}
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )

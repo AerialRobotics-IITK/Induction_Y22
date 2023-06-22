@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+    <include file="$(find smb_gazebo)/launch/smb_gazebo.launch">
+        <arg name='world_file' value="$(find smb_gazebo)/worlds/big_map_summer_school.world"/>
+        <arg name='laser_enabled' value="true"/>
+    </include>
+    <!-- <node name='teleop_twist_keyboard' pkg="teleop_twist_keyboard" type='teleop_twist_keyboard.py' output="screen"/> # select "screen" for console -->
+    <node name='Scanner' pkg="smb_highlevel_controller" type='smb_highlevel_controller_node' output="screen">
+            <param name="rosconsole_format" type="string" value="[%n] [%level]: %f: %m%n" />
+
+    </node>
+    <node name='teleop_twist_keyboard' pkg="teleop_twist_keyboard" type='teleop_twist_keyboard.py' output="screen" launch-prefix="xterm -e">
+        <rosparam file="$(find smb_highlevel_controller)/config/config.yaml" command="load"/>
+    </node>
+</launch>

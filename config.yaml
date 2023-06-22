@@ -1,0 +1,5 @@
+scanSub:
+  topic: /scan
+  queue-size: 10
+  
+

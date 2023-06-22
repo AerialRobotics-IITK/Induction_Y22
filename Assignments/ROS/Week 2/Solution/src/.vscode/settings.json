@@ -1,0 +1,12 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/kaptaan/IIT_Kanpur/Teams/Aerial_Robotics/rotors_ws/devel/lib/python3/dist-packages",
+        "/home/kaptaan/Programming/ROS/noetic/Workspaces/practice_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/kaptaan/IIT_Kanpur/Teams/Aerial_Robotics/rotors_ws/devel/lib/python3/dist-packages",
+        "/home/kaptaan/Programming/ROS/noetic/Workspaces/practice_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages"
+    ]
+}

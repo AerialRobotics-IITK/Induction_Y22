@@ -1,0 +1,51 @@
+import cv2
+import time
+
+# Capturing camera feed
+cap = cv2.VideoCapture(0)
+
+if not cap.isOpened():
+    print("Unable to capture footage")
+
+frame_count = 0
+images = []
+
+while frame_count < 2:
+    ret, frame = cap.read()
+
+    if not ret:
+        print("Video not read successfully")
+        break
+
+    images.append(frame)
+    cv2.imshow("Preprocessedimage " + str(frame_count), frame)
+
+    frame_count += 1
+    time.sleep(2)
+
+
+gray_images = [cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) for image in images]
+blurred_images = [cv2.GaussianBlur(gray_image, (5, 5), 2) for gray_image in gray_images]
+\edges = cv2.Canny(blurred_images , ,) this is to show canny filter i didnt know the threshold so
+difference = cv2.subtract(blurred_images[0], blurred_images[1])
+_, thresholded_img = cv2.threshold(difference, 75, 255, cv2.THRESH_BINARY)
+element = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+eroded_img = cv2.erode(thresholded_img, element, iterations=2)
+opened_img = cv2.dilate(eroded_img, element, iterations=2)
+dilated_img = cv2.dilate(opened_img, element, iterations=2)
+closed_img = cv2.erode(dilated_img, element, iterations=2)
+mask = closed_img
+final_bgr = cv2.bitwise_and(images[1], images[1], mask=mask)
+cv2.imshow("Processed Image", final_bgr)
+final_gray = cv2.cvtColor(final_bgr, cv2.COLOR_BGR2GRAY)
+moments = cv2.moments(final_gray)
+centroid_x = int(moments['m10'] / moments['m00'])
+centroid_y = int(moments['m01'] / moments['m00'])
+center = (centroid_x, centroid_y)
+color = (0, 0, 255)
+cv2.circle(final_bgr, center, 5, color, 1)
+cv2.imshow('Centroid', final_bgr)
+
+cv2.waitKey(0)
+cap.release()
+cv2.destroyAllWindows()

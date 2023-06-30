@@ -1,0 +1,4 @@
+smb_highlevel_controller:
+  p_gain_linear: 1.0
+  p_gain_angular: 1.0
+  

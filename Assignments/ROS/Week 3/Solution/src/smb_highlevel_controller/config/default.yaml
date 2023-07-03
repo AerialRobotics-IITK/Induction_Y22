@@ -1,0 +1,14 @@
+publisher_topic: /cmd_vel
+subscriber_topic: /scan
+publisher_queue_size: 10
+subscriber_queue_size: 10
+rate: 10
+desired_angle: 180
+desired_distance: 1
+angle_kp: 0.01
+angle_kd: 0.00001
+angle_ki: 0
+velocity_kp: 1
+velocity_kd: 0.0001
+velocity_ki: 0
+angle_error: 5

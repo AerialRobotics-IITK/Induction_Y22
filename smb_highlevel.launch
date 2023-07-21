@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+<include file="$(find smb_gazebo)/launch/smb_gazebo.launch">
+
+<arg name="world_file" value="$(find smb_highlevel_controller)/worlds/singlePillar.world"/>
+<arg name="laser_scan_max_height" value="1.0"/>
+<arg name="laser_scan_min_height" value="-0.2"/>
+<!-- <rosparam command="load" ns="gazebo_ros_control">
+    linear/x/has_velocity_limits: false
+    angular/z/has_velocity_limits: false
+</rosparam> -->
+</include>
+<rosparam command="load" file="$(find smb_highlevel_controller)/config/gains.yaml"/>
+<node name="smb_highlevel_controller" pkg="smb_highlevel_controller" type="smb_highlevel_controller" output="screen"/>
+<node name="rviz_1687433049923569481" pkg="rviz" type="rviz" output="screen"/>
+</launch>

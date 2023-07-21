@@ -1,0 +1,5 @@
+<launch>
+    <node name="square_path" pkg="square_path" type="square_path" output="screen">
+        <rosparam command="load" file="$(find square_path)/config/default.yaml" />
+    </node>
+</launch>

@@ -1,0 +1,14 @@
+rate: 10
+queue_size: 10
+altitude: 2
+side: 10
+rounds: 1
+tolerance: 0.1
+mode: GUIDED
+set_mode_service: /mavros/set_mode
+arm_service: /mavros/cmd/arming
+takeoff_service: /mavros/cmd/takeoff
+land_service: /mavros/cmd/land
+state_subscription: /mavros/state
+position_subscription: /mavros/local_position/pose
+position_publisher: /mavros/setpoint_position/local
